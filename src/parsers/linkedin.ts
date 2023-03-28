@@ -1,4 +1,4 @@
-import HTMLParser from './base_parser';
+import HTMLParser from './base';
 import _ from 'lodash';
 import type { LinkedInVideo } from '@/types';
 
@@ -24,6 +24,21 @@ class LinkedInParser extends HTMLParser {
         return videoData as LinkedInVideo;
     }
 
+    getVideoProps() {
+        const videoElem = this.root.querySelector('video[data-sources]');
+        if(!videoElem) {
+            return null;
+        }
+
+        const data = this.unescape(videoElem.getAttribute('data-sources') || '');
+
+        try {
+            const videoObj: Array<{src: string; type: string; 'data-bitrate': string}>  = JSON.parse(data);
+            const thumbnailUrl = this.unescape(videoElem.getAttribute('data-poster-url') || '');
+        } catch (error) {
+            return null;
+        };
+    }
 }
 
 export default LinkedInParser;

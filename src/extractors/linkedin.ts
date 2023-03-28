@@ -1,4 +1,4 @@
-import BaseExtractor from "./base_extractor";
+import BaseExtractor from "./base";
 import type { ExtractedVideo } from "@/types";
 
 class LinkedInExtractor extends BaseExtractor {
