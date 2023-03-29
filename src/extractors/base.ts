@@ -1,25 +1,22 @@
-import { ExtractedVideo } from '../types';
 import _ from 'lodash';
+import { ExtractedVideo } from '../types';
+import RequestError from '@/utils/request_error';
 
 abstract class BaseExtractor {
     abstract urlPattern: RegExp;
     abstract url: string;
-    abstract isMatch: boolean;
 
 
-    extractId() {
-        if (!this.isMatch) {
-            throw new Error('Pattern was not matched');
-        }
+    validate() {
         const matches = this.url.match(this.urlPattern);
-        if (!matches || !matches.groups) {
-            throw new Error('The pattern was not matched or no id group was matched');
+        if(!matches) {
+            throw new RequestError('Please enter a valid url', 400);
         }
 
-        return _.get(matches.groups, 'id');
+        return _.get(matches.groups, 'id') || matches[1];
     }
 
-    abstract extractVideo(): ExtractedVideo
+    abstract extractVideo(): Promise<ExtractedVideo | ExtractedVideo[]>
 }
 
 
