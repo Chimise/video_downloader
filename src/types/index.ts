@@ -3,7 +3,7 @@ export interface ExtractedVideo {
     title: string;
     formats: Array<VideoProp>;
     thumbnail: string | null;
-    origin_url: string;
+    origin_url?: string;
 }
 
 interface VideoProp {
@@ -11,6 +11,8 @@ interface VideoProp {
     ext: string;
     quality?: string;
     rate?: string;
+    width?: number;
+    height?: number;
 
 }
 

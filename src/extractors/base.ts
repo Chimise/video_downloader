@@ -7,10 +7,10 @@ abstract class BaseExtractor {
     abstract url: string;
 
 
-    validate() {
+    validate(errorMessage: string = 'Please enter a valid url') {
         const matches = this.url.match(this.urlPattern);
         if(!matches) {
-            throw new RequestError('Please enter a valid url', 400);
+            throw new RequestError(errorMessage, 400);
         }
 
         return _.get(matches.groups, 'id') || matches[1];

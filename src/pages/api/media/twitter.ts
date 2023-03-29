@@ -1,4 +1,4 @@
-import {NextApiRequest, NextApiResponse} from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { getQuery, handleError } from '@/utils';
 import RequestError from '@/utils/request_error';
 import TwitterExtractor from '@/extractors/twitter';
@@ -13,8 +13,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
                 }
 
                 const extractor = new TwitterExtractor(url);
-                const videoProps = await extractor.extractVideo();
-                return res.json(videoProps);
+                const videos = await extractor.extractVideo();
+                return res.json(videos);
             default:
                 throw new RequestError('Method not allowed', 405);
 
