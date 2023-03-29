@@ -30,7 +30,7 @@ class Request {
     }
 
     contentType() {
-        return this.response.headers.get('Content-Type')?.toLowerCase();
+        return this.response.headers.get('content-type')?.toLowerCase();
     }
 
     isContentHtml() {
@@ -54,7 +54,7 @@ class Request {
     }
 
     isContentJSON() {
-        if (this.contentType() === 'application/json') {
+        if (this.contentType()?.includes('application/json')) {
             return true;
         }
         return false;
@@ -68,7 +68,7 @@ class Request {
 
 
 
-    static send(url: string, { headers = {}, method = "GET", body, retries = 3, delay = 1000, timeout = 5000 }: SendOptions = {}) {
+    static send(url: string, { headers = {}, method = "GET", body, retries = 5, delay = 1000, timeout = 8000 }: SendOptions = {}) {
         
         let updatedHeaders = {
             ...this.defaultHeaders,
@@ -79,12 +79,12 @@ class Request {
             const controller = new AbortController();
 
             // Start the timeout
-            const id = setTimeout(controller.abort, timeout);
+            const id = setTimeout(controller.abort.bind(controller), timeout);
 
             // Abort the Request on timeout
-            controller.signal.addEventListener('abort', () => {
-                rej(new Error('Time out reached'));
-            });
+            controller.signal.addEventListener('abort', function() {
+                rej(new RequestError('Time out reached'));
+            }, true);
 
             const wrapper = (retryCount: number) => {
                 // Start the Request
@@ -93,8 +93,9 @@ class Request {
                     if (!response.ok) {
                         const error = new RequestError('An error occurred', response.status);
                         // Return an error response
+                        console.log(response);
                         if (response.status === 404) {
-                            return rej(error)
+                            return rej(new RequestError('Video could not be found'));
                         }
                         // Retry again
                         throw error;
@@ -105,16 +106,19 @@ class Request {
                 }).catch(err => {
                     if (retryCount > 0) {
                         // Update User-Agent header
+                        if (err.name === 'AbortError') {
+                            return rej(new RequestError('Request timeout', 500));
+                        }
                         updatedHeaders = {
                             ...updatedHeaders,
                             'User-Agent': randomUserAgent()
                         }
                         // Retry the request
                         setTimeout(() => wrapper(--retryCount), delay);
-                    } else {
-                        if (err.name !== 'AbortError') {
-                            rej(err);
-                        }
+                    }else {
+                        clearTimeout(id);
+                        const error = new RequestError('An error occured', 500);
+                        rej(error);
                     }
                 })
             }
