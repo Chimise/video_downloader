@@ -90,7 +90,7 @@ class HTMLParser {
         return this.getMetaOgContent("url");
     }
 
-    getJsonLD() {
+    getJsonLD<T extends object = {}>() {
         const elem = this.root.querySelector(
             this.genAttrSel("script", "type", "application/ld+json")
         );
@@ -101,7 +101,7 @@ class HTMLParser {
         const jsonld = elem.textContent.trim();
         try {
             const data: object = JSON.parse(jsonld);
-            return data;
+            return data as T;
         } catch (error) {
             return null;
         }
