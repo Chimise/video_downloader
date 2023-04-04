@@ -95,7 +95,11 @@ class Request {
                         // Return an error response
                         console.log(response);
                         if (response.status === 404) {
-                            return rej(new RequestError('Video could not be found'));
+                            return rej(new RequestError('Data not found', 404));
+                        }
+
+                        if(response.status === 400 || response.status === 422) {
+                            return rej(new RequestError('Invalid user input', 404));
                         }
                         // Retry again
                         throw error;
