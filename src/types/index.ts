@@ -13,7 +13,6 @@ interface VideoProp {
     rate?: string;
     width?: number;
     height?: number;
-
 }
 
 export interface StatusData {

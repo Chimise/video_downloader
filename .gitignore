@@ -37,6 +37,4 @@ yarn-error.log*
 next-env.d.ts
 
 #others
-*.html
-data.json
-data-twitter.json
+*.sample.*
