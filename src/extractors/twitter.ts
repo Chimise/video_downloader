@@ -41,15 +41,16 @@ class TwitterExtractor extends BaseExtractor {
         return `${baseApiUrl}${path}`;
     }
 
+    // Get Twitter status data from Twitter API
     async fetchStatusInfo() {
-        // Validate the input url and extract an id
+       
         this.id = this.validate();
         const token = await this.fetchGuestToken();
         const headers = {
             'x-guest-token': token,
             ...defaultHeader
         }
-        //Add the query to the request
+        
         //@ts-ignore
         const query = new URLSearchParams({
             cards_platform: 'Web-12',
@@ -59,9 +60,9 @@ class TwitterExtractor extends BaseExtractor {
             tweet_mode: 'extended'
         }).toString();
 
-        // Send request to retrieve the video details
+
         const res = await Request.send(this.genUrl(`/statuses/show/${this.id}.json?${query}`), { headers });
-        // Parse the response
+        
         const data = await res.parseJSON<StatusData>();
 
         if (!data) {
@@ -71,8 +72,9 @@ class TwitterExtractor extends BaseExtractor {
         return data;
     }
 
+    // Extract the dimensions width and height from the video url
     getAttrFromUrl(url: string) {
-        // Extract the dimensions from the video url
+        
         const pattern = /\/(?<width>\d+)x(?<height>\d+)\//;
         const matches = url.match(pattern);
         if (!matches || !matches.groups) {
@@ -87,11 +89,10 @@ class TwitterExtractor extends BaseExtractor {
 
     }
 
+     // Extract all avialable video formats of type mp4
     parseVideoVariants(variants: Array<VideoVariants>) {
 
         const formats: ExtractedVideo['formats'] = [];
-
-        // Extract all avialable different video formats of type mp4
 
         for (const variant of variants) {
             const type = _.get(variant, 'content_type', '');
@@ -120,21 +121,21 @@ class TwitterExtractor extends BaseExtractor {
         })
     }
 
-
+    // Parse the Response from Twitter API and select fields to send to client
     parseStatusInfo(status: StatusData) {
-        // Strip out dummy url https://t.co/ToLXmbRB6A and new lines from the title
+        
         const title = _.get(status, 'full_text', '').replace(/\n/g, ' ').replace(/\s+(?:https?:\/\/[^ ]+)/g, '');
 
         const medias = _.get(status, 'entities.media', []).concat(_.get(status, 'extended_entities.media', []));
 
-        // Get only video media types
+        
         const videoMedias = medias.filter(media => _.get(media, 'type') === 'video');
 
         if (_.isEmpty(videoMedias)) {
             return null;
         }
 
-        // Extract the import properties from the video media
+        
         const videoInfo = videoMedias.map((media) => {
             return {
                 id: this.id,
@@ -147,13 +148,11 @@ class TwitterExtractor extends BaseExtractor {
         return videoInfo;
     }
 
-
+    
     async extractVideo(): Promise<ExtractedVideo[]> {
         
-        //Get the video details from the Twitter API
         const data = await this.fetchStatusInfo();
 
-        //Parse the response and extract video details
         const videos = this.parseStatusInfo(data);
 
         if (!videos) {
