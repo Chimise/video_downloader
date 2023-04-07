@@ -1,0 +1,194 @@
+:root {
+    /*general colors */
+    --black: #000000;
+    --white: #FFFFFF;
+    --slate: #64748B;
+    --slate-dark-1: #89A1AC;
+    --slate-dark-2: #1e293b;
+    --slate-tint-1: #EAEFF2;
+    --slate-tint-2: #CBD5E1;
+    --teal: #6BCEBB;
+    --teal-dark-1: #4DBBA6;
+    --teal-dark-2: #31A38D;
+    --teal-tint-1: #D2F0EA;
+    --teal-tint-2: #F0FAF8;
+    --tomato: #FB724B;
+    --tomato-tint-1: #F38E7B;
+    --tomato-tint-2: #FDEFED;
+
+    /* gray shades */
+    --gray-05: #F5F6F7;
+    --gray-10: #F2F3F5;
+    --gray-20: #EBEDF0;
+    --gray-30: #DADDE1;
+    --gray-40: #CCD0D5;
+    --gray-50: #BEC3C9;
+    --gray-60: #8D949E;
+    --gray-70: #606770;
+    --gray-80: #444950;
+    --gray-90: #303338;
+    --gray-100: #1C1E21;
+
+    /* black shades */
+    --black-alpha-05: rgba(0, 0, 0, 0.05);
+    --black-alpha-10: rgba(0, 0, 0, 0.1);
+    --black-alpha-15: rgba(0, 0, 0, 0.15);
+    --black-alpha-20: rgba(0, 0, 0, 0.2);
+    --black-alpha-30: rgba(0, 0, 0, 0.3);
+    --black-alpha-40: rgba(0, 0, 0, 0.4);
+    --black-alpha-50: rgba(0, 0, 0, 0.5);
+    --black-alpha-60: rgba(0, 0, 0, 0.6);
+    --black-alpha-80: rgba(0, 0, 0, 0.8);
+
+    /* white shades */
+    --white-alpha-05: rgba(255, 255, 255, 0.05);
+    --white-alpha-10: rgba(255, 255, 255, 0.1);
+    --white-alpha-20: rgba(255, 255, 255, 0.2);
+    --white-alpha-30: rgba(255, 255, 255, 0.3);
+    --white-alpha-40: rgba(255, 255, 255, 0.4);
+    --white-alpha-50: rgba(255, 255, 255, 0.5);
+    --white-alpha-60: rgba(255, 255, 255, 0.6);
+    --white-alpha-80: rgba(255, 255, 255, 0.8);
+
+    /* Main color shades */
+    --primary-icon: #1C1E21;
+    --primary-text: #1C1E21;
+    --primary-1: #EA580C;
+    --primary-2: #FCA5A5;
+    --primary-3: #FDA4AF;
+    --secondary-1: rgb(118, 62, 230);
+    --secondary-2: rgb(147, 96, 247);
+    --secondary-3: rgb(219, 26, 139);
+    --supplementary-1: rgb(255, 122, 105);
+    --supplementary-2: rgb(241, 168, 23);
+    --supplementary-3: rgb(49, 162, 76);
+    --supplementary-4: rgb(50, 52, 54);
+
+    /* Button colors */
+    --disabled-button-background: #E4E6EB;
+    --disabled-button-text: #BCC0C4;
+    --disabled-icon: #BCC0C4;
+    --disabled-text: #BCC0C4;
+    --primary-button-background: #1B74E4;
+    --primary-button-icon: #FFFFFF;
+    --primary-button-pressed: #77A7FF;
+    --primary-button-text: #FFFFFF;
+    --secondary-button-background: #E4E6EB;
+    --secondary-button-background-floating: #ffffff;
+    --secondary-button-background-on-dark: rgba(0, 0, 0, 0.4);
+    --secondary-button-pressed: rgba(0, 0, 0, 0.05);
+    --secondary-button-stroke: transparent;
+    --secondary-button-text: #050505;
+
+    /* Overlays */
+    --dark-gradient: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+    --dark-overlay: rgba(0, 0, 0, 0.4);
+    --light-overlay: rgba(255, 255, 255, 0.4);
+
+    /* Shadows */
+    --shadow-1: rgba(0, 0, 0, 0.1);
+    --shadow-2: rgba(0, 0, 0, 0.2);
+    --shadow-5: rgba(0, 0, 0, 0.5);
+    --shadow-8: rgba(0, 0, 0, 0.8);
+    --shadow-inset: rgba(255, 255, 255, 0.5);
+    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    --shadow-persistent: 0px 0px 12px rgba(52, 72, 84, 0.05);
+    --shadow-primary: 0px 5px 12px rgba(52, 72, 84, 0.2);
+    
+    
+    /* Progress */
+    --progress-ring-neutral-background: rgba(0, 0, 0, 0.2);
+    --progress-ring-neutral-foreground: #000000;
+    --progress-ring-on-media-background: rgba(255, 255, 255, 0.2);
+    --progress-ring-on-media-foreground: #FFFFFF;
+    --progress-ring-blue-background: rgba(24, 119, 242, 0.2);
+    --progress-ring-blue-foreground: hsl(214, 89%, 52%);
+    --progress-ring-disabled-background: rgba(190, 195, 201, 0.2);
+    --progress-ring-disabled-foreground: #BEC3C9;
+
+    /* Button */
+    --header-height: 56px;
+    --button-corner-radius: 6px;
+    --button-corner-radius-medium: 10px;
+    --button-corner-radius-large: 12px;
+    --button-height-large: 40px;
+    --button-height-medium: 36px;
+    --button-padding-horizontal-large: 16px;
+    --button-padding-horizontal-medium: 16px;
+    
+
+    /* Animations */
+    --animation-enter-exit-in: cubic-bezier(0.14, 1, 0.34, 1);
+    --animation-enter-exit-out: cubic-bezier(0.45, 0.1, 0.2, 1);
+    --animation-swap-shuffle-in: cubic-bezier(0.14, 1, 0.34, 1);
+    --animation-swap-shuffle-out: cubic-bezier(0.45, 0.1, 0.2, 1);
+    --animation-move-in: cubic-bezier(0.17, 0.17, 0, 1);
+    --animation-move-out: cubic-bezier(0.17, 0.17, 0, 1);
+    --animation-expand-collapse-in: cubic-bezier(0.17, 0.17, 0, 1);
+    --animation-expand-collapse-out: cubic-bezier(0.17, 0.17, 0, 1);
+    --animation-passive-move-in: cubic-bezier(0.5, 0, 0.1, 1);
+    --animation-passive-move-out: cubic-bezier(0.5, 0, 0.1, 1);
+    --animation-quick-move-in: cubic-bezier(0.1, 0.9, 0.2, 1);
+    --animation-quick-move-out: cubic-bezier(0.1, 0.9, 0.2, 1);
+    --animation-fade-in: cubic-bezier(0, 0, 1, 1);
+    --animation-fade-out: cubic-bezier(0, 0, 1, 1);
+    --fast: 200ms;
+    --slow: 400ms;
+
+    /* Font Families */
+    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
+    --font-family-default: Helvetica, Arial, sans-serif;
+    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+    --body-font-family: Placeholder Font;
+    
+    /* Body */
+    --body-font-size: 0.9375rem;
+    --body-font-weight: 400;
+    --body-line-height: 1.3333;
+
+    --navbar-height: 70px;
+
+    /* Headings */
+    --headline1-font-family: Optimistic Display Bold, system-ui, sans-serif;
+    --headline1-font-size: 1.75rem;
+    --headline1-font-weight: 700;
+    --headline1-line-height: 1.2143;
+    --headline2-font-family: Optimistic Display Bold, system-ui, sans-serif;
+    --headline2-font-size: 1.5rem;
+    --headline2-font-weight: 700;
+    --headline2-line-height: 1.25;
+    --headline3-font-family: Optimistic Display Bold, system-ui, sans-serif;
+    --headline3-font-size: 1.0625rem;
+    --headline3-font-weight: 700;
+    --headline3-line-height: 1.2941;
+
+    /* Label Text */
+    --primary-label-font-family: Optimistic Display Medium, system-ui, sans-serif;
+    --primary-label-font-size: 1.0625rem;
+    --primary-label-font-weight: 500;
+    --primary-label-line-height: 1.2941;
+    --secondary-label-font-family: Placeholder Font;
+    --secondary-label-font-size: 0.9375rem;
+    --secondary-label-font-weight: 500;
+    --secondary-label-line-height: 1.3333;
+
+    /* Text input */
+    --input-background: #FFFFFF;
+    --input-background-disabled: #F0F2F5;
+    --input-border-color: #CED0D4;
+    --input-corner-radius: 6px;
+    --text-input-field-font-family: Placeholder Font;
+    --text-input-field-font-size: 1rem;
+    --text-input-field-font-weight: 500;
+    --text-input-field-line-height: 1.2941;
+    --text-input-label-font-family: Placeholder Font;
+    --text-input-label-font-size: 17px;
+    --text-input-label-font-size-scale-multiplier: 0.75;
+    --text-input-label-font-weight: 400;
+    --text-input-label-line-height: 1.2941;
+    --text-input-label-top: 22px;
+    --text-input-min-height: 64px;
+    --text-input-padding-vertical: 12px;
+}
+
