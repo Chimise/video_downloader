@@ -1,0 +1,37 @@
+.container {
+    margin: 0 auto;
+}
+
+.container.container-sm {
+    max-width: 1080px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+}
+
+.container.container-md {
+    max-width: 1200px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+}
+
+.container.container-lg {
+    max-width: 100rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 95%;
+}
+
+@media (min-width: 1020px) {
+    .container.container-sm {
+        padding: initial 14px;
+    }
+
+    .container.container-md {
+        padding: initial 15px;
+    }
+    .container.container-lg {
+        padding: initial 18px;
+    }
+}
