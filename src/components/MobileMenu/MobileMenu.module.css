@@ -1,0 +1,50 @@
+.menu-enter {
+    transition-property: transform, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: var(--animation-passive-move-in);
+}
+
+.menu-enter_from, .menu-leave_to {
+    transform: translateY(calc(-100% - (var(--navbar-height))));
+    opacity: 0;
+}
+
+.menu-enter_to, .menu-leave_from {
+    transform: translateY(var(--navbar-height));
+    opacity: 1;
+}
+
+.menu-leave {
+    transition-property: transform, opacity;
+    transition-duration: 250ms;
+    transition-timing-function: var(--animation-passive-move-in);
+}
+
+.menu {
+    position: fixed;
+    z-index: 50;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+.menu-wrapper {
+    position: relative;
+    z-index: 50;
+    height: 15rem;
+    width: 100vw;
+    overflow-y: hidden;
+    background: var(--white);
+    pointer-events: auto;
+}
+
+@media(min-width: 1024px) {
+    .menu {
+        display: none;
+    }
+}
+
