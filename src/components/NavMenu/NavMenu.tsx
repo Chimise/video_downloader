@@ -45,7 +45,7 @@ const NavMenu = ({ name, content, className }: NavMenuProps) => {
           <Transition as={Fragment} enter={styles['panel-enter']} enterFrom={styles['panel-enter-from']} enterTo={styles['panel-enter-to']} leave={styles['panel-leave']} leaveFrom={styles['panel-leave-from']} leaveTo={styles['panel-leave-to']}>
             <Popover.Panel className={styles["navmenu-panel"]}>
             <div className={styles['navmenu-divider']} />
-              <Container className={styles['navmenu-wrapper']}>
+              <Container as='nav' className={styles['navmenu-wrapper']}>
               {content}
               </Container>
             </Popover.Panel>

@@ -53,9 +53,9 @@
     /* Main color shades */
     --primary-icon: #1C1E21;
     --primary-text: #1C1E21;
-    --primary-1: #EA580C;
-    --primary-2: #FCA5A5;
-    --primary-3: #FDA4AF;
+    --primary-1: #E94F2E;
+    --primary-2: rgba(248, 239, 237, 0.4);
+    --primary-3: #FFF1F2;
     --secondary-1: rgb(118, 62, 230);
     --secondary-2: rgb(147, 96, 247);
     --secondary-3: rgb(219, 26, 139);
@@ -118,10 +118,6 @@
     
 
     /* Animations */
-    --animation-enter-exit-in: cubic-bezier(0.14, 1, 0.34, 1);
-    --animation-enter-exit-out: cubic-bezier(0.45, 0.1, 0.2, 1);
-    --animation-swap-shuffle-in: cubic-bezier(0.14, 1, 0.34, 1);
-    --animation-swap-shuffle-out: cubic-bezier(0.45, 0.1, 0.2, 1);
     --animation-move-in: cubic-bezier(0.17, 0.17, 0, 1);
     --animation-move-out: cubic-bezier(0.17, 0.17, 0, 1);
     --animation-expand-collapse-in: cubic-bezier(0.17, 0.17, 0, 1);
@@ -133,6 +129,7 @@
     --animation-fade-in: cubic-bezier(0, 0, 1, 1);
     --animation-fade-out: cubic-bezier(0, 0, 1, 1);
     --fast: 200ms;
+    --medium: 300ms;
     --slow: 400ms;
 
     /* Font Families */
@@ -148,20 +145,6 @@
     --body-line-height: 1.3333;
 
     --navbar-height: 70px;
-
-    /* Headings */
-    --headline1-font-family: Optimistic Display Bold, system-ui, sans-serif;
-    --headline1-font-size: 1.75rem;
-    --headline1-font-weight: 700;
-    --headline1-line-height: 1.2143;
-    --headline2-font-family: Optimistic Display Bold, system-ui, sans-serif;
-    --headline2-font-size: 1.5rem;
-    --headline2-font-weight: 700;
-    --headline2-line-height: 1.25;
-    --headline3-font-family: Optimistic Display Bold, system-ui, sans-serif;
-    --headline3-font-size: 1.0625rem;
-    --headline3-font-weight: 700;
-    --headline3-line-height: 1.2941;
 
     /* Label Text */
     --primary-label-font-family: Optimistic Display Medium, system-ui, sans-serif;

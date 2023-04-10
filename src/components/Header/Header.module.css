@@ -2,10 +2,11 @@
   padding-top: 5px;
   padding-bottom: 5px;
   height: var(--navbar-height);
-  z-index: 100;
+  z-index: 1000;
   position: fixed;
   top: 0;
   width: 100vw;
+  background-color: var(--white);
 }
 
 .navbar-wrapper {
@@ -27,7 +28,7 @@
 }
 
 .navbar nav > * + * {
-    margin-left: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .navlink {
@@ -47,14 +48,57 @@
 .navbar-icon {
   flex-shrink: 0;
   margin-left: 0.5rem;
-}
-
-.icon {
-  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
   height: 1.5rem;
+  position: relative;
 }
 
-@media (min-width: 768px) {
+.mobile-icon {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0.15rem;
+  background-color: var(--white);
+  transition: transform var(--fast) ease-in;
+}
+
+.mobile-icon::before,
+.mobile-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--black);
+  transition: transform var(--fast) ease-in;
+  transform-origin: center;
+}
+
+.mobile-icon_open.mobile-icon::after {
+  transform: rotate(-45deg);
+  bottom: 0px;
+}
+
+.mobile-icon_close.mobile-icon::after {
+  bottom: -8px;
+  transform: rotate(0deg);
+}
+
+.mobile-icon.mobile-icon_open::before {
+  top: 0px;
+  transform: rotate(45deg);
+}
+
+.mobile-icon.mobile-icon_close::before {
+  top: -8px;
+  transform: rotate(0deg);
+  
+}
+
+@media (min-width: 1024px) {
   .navbar {
     justify-content: start;
   }
