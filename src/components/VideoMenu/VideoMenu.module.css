@@ -1,0 +1,105 @@
+.menu {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+}
+
+.menu-btn {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    color: var(--black);
+    background-color: transparent;
+    border: 1px solid var(--gray-60);
+}
+
+.menu-btn:hover {
+    cursor: pointer;
+}
+
+.menu-btn:focus {
+    outline: none;
+}
+
+.btn-icon {
+    margin-left: 0.5rem;
+    /* margin-right: -0.25rem; */
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--gray-60);
+}
+
+
+.options-enter {
+    transition-property: opacity, transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease-out;
+}
+
+.options-leave {
+    transition-property: opacity, transform;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in;
+}
+
+.options-enter_from, .options-leave_to {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.options-enter_to, .options-leave_from {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.options {
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+    width: 14rem;
+    transform-origin: top right;
+    border-radius: 0.25rem;
+    background-color: var(--white);
+    box-shadow: var(--shadow-elevated);
+    z-index: 200;
+}
+
+.options:focus {
+    outline: none;
+}
+
+.options > div {
+    padding: 0.5rem 0rem;
+}
+
+.option {
+   width: 100%;
+   padding: 1rem 0.5rem;
+   font-size: 0.8rem;
+   line-height: 0.25rem;
+   display: block;
+}
+
+.option_active {
+    background-color: var(--gray-70);
+    color: var(--gray-10);
+}
+
+.option_notactive {
+    color: var(--gray-60);
+}
+
+.option_current {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+
+

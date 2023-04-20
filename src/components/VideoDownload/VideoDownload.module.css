@@ -1,0 +1,132 @@
+.download {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    height: auto;
+}
+
+.thumbnail-wrapper {
+    width: 100%;
+    height: 10rem;
+    position: relative;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.play-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--primary-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white
+}
+
+.play-btn:focus {
+    outline: none;
+}
+
+.main-content {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.main-content > div + div {
+    margin-top: 2rem;
+}
+
+.main-title {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-weight: 500;
+}
+
+.badges {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.badges > * + * {
+    margin-left: 0.6rem;
+}
+
+.download-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.download-actions > div + div {
+    margin-left: 1rem;
+}
+
+.download-btn {
+    display: block;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    background-color: var(--slate-dark-2);
+    color: var(--white);
+}
+
+
+@media (min-width: 1024px){
+    .download {
+        flex-direction: row;
+        height: 15rem;
+    }
+
+    .download-content {
+        flex-direction: row;
+    }
+
+    .thumbnail-wrapper {
+        height: 100%;
+        width: 30%;
+        flex-shrink: 0;
+    }
+
+    .main-content {
+        width: 70%;
+        padding: 0rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+
+    .download-actions {
+        justify-content: flex-end;
+    }
+}

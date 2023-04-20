@@ -1,0 +1,124 @@
+.search-form {
+    position: relative;
+    height: 3rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem 3rem 0.5rem 0.5rem;
+    display: block;
+    border-radius: 0.25rem;
+    border: 1px solid var(--gray-60);
+    transition: border-color var(--fast) ease-in;
+    height: 100%;
+    color: var(--gray-90);
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+
+/* Remove clear button from search-input in chrome */
+.search-input::-webkit-search-cancel-button, .search-input::-webkit-search-decoration, .search-input::-webkit-search-results-button, .search::-webkit-search-results-decoration {
+    display: none;
+}
+
+/* Remove clear button from IE */
+.search-input.hide-clear::-ms-clear, .search-input.hide-clear::-ms-reveal {
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--gray-90);
+}
+
+.search-input::placeholder {
+    color: var(--gray-90);
+    font-size: 1rem;
+    line-height: 1.25rem;
+}
+
+.search-form:focus-within .search-button {
+    box-shadow: 0px 0px 0px 1px var(--supplementary-1);
+}
+
+.search-button {
+    position: absolute;
+    width: 2rem;
+    height: 1.8rem;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    display: inline-flex;
+    background-color: var(--primary-1);
+    transition: box-shadow var(--fast) ease-in-out;
+    padding: 0.4rem;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    color: var(--white);
+    border-radius: 0.25rem;
+
+}
+
+.search-button:hover {
+    box-shadow: 0px 0px 0px 1px var(--supplementary-1);
+}
+
+.search-button:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 1px var(--supplementary-1);
+}
+
+.reset-button {
+    position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
+    display: inline-flex;
+    background-color: transparent;
+    padding: 0.1rem;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    color: var(--primary-1);
+}
+
+.search-button svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.reset-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke-width: 1px;
+}
+
+.search-button:hover svg {
+    color: var(--white);
+}
+
+.error-open, .error-close {
+    transition: opacity var(--medium) var(--animation-fade-in);
+}
+
+.error-open_from, .error-close_to {
+    opacity: 0;
+}
+
+.error-open_to, .error-close_from {
+    opacity: 1;
+}
+
+.search-error {
+    position: absolute;
+    bottom: -1.3rem;
+    font-size: 0.85rem;
+    line-height: 1.25rem;
+    color: var(--tomato);
+}
+
