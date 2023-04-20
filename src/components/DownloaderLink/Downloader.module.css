@@ -1,0 +1,36 @@
+.download-link {
+    display: inline-flex;
+    align-items: center;
+    transition: transform var(--medium) ease-in-out;
+}
+
+.download-link:hover {
+    transform: scale(1.1);
+}
+
+.download-link > * + * {
+    margin-left: 0.25rem;
+}
+
+.download-text {
+    font-size: 1.3rem;
+    line-height: 1.75rem;
+    color: var(--gray-80);
+    transition: transform var(--fast) ease-out;
+}
+
+.download-link:hover .download-text {
+    color: var(--primary-1);
+}
+
+
+.download-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+    padding: 0.4rem;
+}
+
+.download-icon svg {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,22 @@
+.social {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem;
+    filter: grayscale(100%);
+}
+
+.social-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.25rem;
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.social-text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}

@@ -1,0 +1,103 @@
+.footer {
+  padding-top: 5rem;
+  /* padding-bottom: 0rem; */
+  background-color: #140505;
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  row-gap: 4rem;
+}
+
+.logo-wrapper > * + * {
+  margin-top: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.icons {
+  display: flex;
+}
+
+.icons > .icon + .icon {
+  margin-left: 0.9rem;
+}
+
+.icon {
+  padding: 0.3rem;
+  background-color: var(--primary-1);
+  border-radius: 0.25rem;
+}
+
+.icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.links {
+  display: block;
+}
+
+.links-heading {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.07em;
+}
+
+.downloaders {
+  display: block;
+  margin-top: 1.5rem;
+}
+
+.downloader {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.downloader a {
+  transition: color var(--fast) ease-out;
+}
+
+.downloader a:hover {
+  color: var(--primary-1);
+}
+
+.divider {
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+
+@media screen and (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 0px;
+    column-gap: 1rem;
+  }
+
+  .logo-wrapper {
+    grid-column: span 1 / span 1;
+    gap: 3rem;
+  }
+
+  .links {
+    grid-column: span 1 / span 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
