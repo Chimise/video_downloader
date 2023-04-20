@@ -1,5 +1,11 @@
 import { parse, HTMLElement } from "node-html-parser";
 
+/**
+ * A Parser is a class that takes in a html string and extracts important metadata from it
+ * Other parsers should implement this base parser
+ */
+
+
 class HTMLParser {
     html: string;
     root: HTMLElement;

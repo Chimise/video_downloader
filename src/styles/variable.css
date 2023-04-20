@@ -51,14 +51,13 @@
     --white-alpha-80: rgba(255, 255, 255, 0.8);
 
     /* Main color shades */
-    --primary-icon: #1C1E21;
-    --primary-text: #1C1E21;
     --primary-1: #E94F2E;
     --primary-2: rgba(248, 239, 237, 0.4);
-    --primary-3: #FFF1F2;
+    --primary-3: rgba(247, 242, 234, 0.6);
     --secondary-1: rgb(118, 62, 230);
     --secondary-2: rgb(147, 96, 247);
     --secondary-3: rgb(219, 26, 139);
+    --secondary-4: #1C1E21;
     --supplementary-1: rgb(255, 122, 105);
     --supplementary-2: rgb(241, 168, 23);
     --supplementary-3: rgb(49, 162, 76);
@@ -80,20 +79,11 @@
     --secondary-button-stroke: transparent;
     --secondary-button-text: #050505;
 
-    /* Overlays */
-    --dark-gradient: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
-    --dark-overlay: rgba(0, 0, 0, 0.4);
-    --light-overlay: rgba(255, 255, 255, 0.4);
 
     /* Shadows */
-    --shadow-1: rgba(0, 0, 0, 0.1);
-    --shadow-2: rgba(0, 0, 0, 0.2);
-    --shadow-5: rgba(0, 0, 0, 0.5);
-    --shadow-8: rgba(0, 0, 0, 0.8);
-    --shadow-inset: rgba(255, 255, 255, 0.5);
-    --shadow-elevated: 0 8px 20px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-    --shadow-persistent: 0px 0px 12px rgba(52, 72, 84, 0.05);
-    --shadow-primary: 0px 5px 12px rgba(52, 72, 84, 0.2);
+    --shadow-elevated: 0px 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-primary: 0px 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-persistent: 0px 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     
     
     /* Progress */
@@ -105,16 +95,6 @@
     --progress-ring-blue-foreground: hsl(214, 89%, 52%);
     --progress-ring-disabled-background: rgba(190, 195, 201, 0.2);
     --progress-ring-disabled-foreground: #BEC3C9;
-
-    /* Button */
-    --header-height: 56px;
-    --button-corner-radius: 6px;
-    --button-corner-radius-medium: 10px;
-    --button-corner-radius-large: 12px;
-    --button-height-large: 40px;
-    --button-height-medium: 36px;
-    --button-padding-horizontal-large: 16px;
-    --button-padding-horizontal-medium: 16px;
     
 
     /* Animations */
@@ -145,33 +125,5 @@
     --body-line-height: 1.3333;
 
     --navbar-height: 70px;
-
-    /* Label Text */
-    --primary-label-font-family: Optimistic Display Medium, system-ui, sans-serif;
-    --primary-label-font-size: 1.0625rem;
-    --primary-label-font-weight: 500;
-    --primary-label-line-height: 1.2941;
-    --secondary-label-font-family: Placeholder Font;
-    --secondary-label-font-size: 0.9375rem;
-    --secondary-label-font-weight: 500;
-    --secondary-label-line-height: 1.3333;
-
-    /* Text input */
-    --input-background: #FFFFFF;
-    --input-background-disabled: #F0F2F5;
-    --input-border-color: #CED0D4;
-    --input-corner-radius: 6px;
-    --text-input-field-font-family: Placeholder Font;
-    --text-input-field-font-size: 1rem;
-    --text-input-field-font-weight: 500;
-    --text-input-field-line-height: 1.2941;
-    --text-input-label-font-family: Placeholder Font;
-    --text-input-label-font-size: 17px;
-    --text-input-label-font-size-scale-multiplier: 0.75;
-    --text-input-label-font-weight: 400;
-    --text-input-label-line-height: 1.2941;
-    --text-input-label-top: 22px;
-    --text-input-min-height: 64px;
-    --text-input-padding-vertical: 12px;
 }
 

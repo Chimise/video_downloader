@@ -2,11 +2,11 @@ export interface ExtractedVideo {
     id: string;
     title: string;
     formats: Array<VideoProp>;
-    thumbnail: string | null;
+    thumbnail?: string;
     origin_url?: string;
 }
 
-interface VideoProp {
+export interface VideoProp {
     url: string;
     ext: string;
     quality?: string;
@@ -69,4 +69,10 @@ export interface TwitterUser {
     id: number;
     name: string;
     screen_name: string;
+}
+
+
+export interface Downloader {
+    iconName: string;
+    name: string;
 }

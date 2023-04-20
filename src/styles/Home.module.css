@@ -1,0 +1,173 @@
+.hero {
+  margin-top: 6rem;
+}
+
+.hero-container {
+  overflow: hidden;
+  height: 100%;
+  padding: 5rem 2rem 1rem;
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary-2) 70%,
+    var(--primary-2) 30%
+  );
+  background-position: cover;
+  position: relative;
+  border-radius: 0;
+}
+
+.hero-video {
+  background-color: var(--primary-2);
+  padding-bottom: 2.5rem;
+}
+
+.hero-image {
+  z-index: -5;
+  transform: translate(0px, -400px) scale(2.5);
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  line-height: 3.2rem;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.hero-description {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.hero-input {
+  margin: 3rem auto 1rem;
+  width: 100%;
+}
+
+.hero-text-input {
+  background-color: transparent;
+}
+
+.social {
+  margin: 4rem 0rem 0rem;
+}
+
+.social-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--gray-80);
+  line-height: 1.75rem;
+  font-weight: 500;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.social-icon {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.feature {
+  padding: 4rem 0rem 2rem;
+  background-image: linear-gradient(
+    rgb(255, 255, 255),
+    rgb(248, 239, 237) 34%,
+    rgb(255, 255, 255) 70%
+  );
+}
+
+.header {
+  text-align: center;
+}
+
+.header > * + * {
+  margin-top: 1.3rem;
+}
+
+.feature-subtitle,
+.usage-subtitle {
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-1);
+  letter-spacing: 0.01em;
+}
+
+.feature-title,
+.usage-title {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 4rem 0rem 2rem;
+}
+
+.card-wrapper {
+  width: 100%;
+  padding: 1rem;
+}
+
+.usage {
+  padding: 2rem 0rem;
+}
+
+@media (min-width: 640px) {
+  .social-icon {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-input {
+    width: 80%;
+  }
+
+  .hero-description span {
+    display: block;
+  }
+
+  .card-wrapper {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-input {
+    width: 75%;
+  }
+
+  .hero-container {
+    border-top-right-radius: 0.8rem;
+    border-top-left-radius: 0.8rem;
+    padding: 6rem 2rem 2rem;
+  }
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .social-icon {
+    width: 20%;
+  }
+}
+
+@media (min-width: 1526px) {
+  .hero-input {
+    width: 70%;
+  }
+}
