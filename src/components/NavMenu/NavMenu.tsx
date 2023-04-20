@@ -3,16 +3,15 @@ import { Popover, Transition } from "@headlessui/react";
 import cn from "classnames";
 import styles from "./NavMenu.module.css";
 import { HiChevronDown } from "react-icons/hi2";
-import Container from "../Container/Container";
 
 interface NavMenuProps {
   name: string;
-  content: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
 }
 
 const timeoutDuration = 100;
-const NavMenu = ({ name, content, className }: NavMenuProps) => {
+const NavMenu = ({ name, children, className }: NavMenuProps) => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const timeOutRef = useRef<NodeJS.Timer>();
 
@@ -45,9 +44,9 @@ const NavMenu = ({ name, content, className }: NavMenuProps) => {
           <Transition as={Fragment} enter={styles['panel-enter']} enterFrom={styles['panel-enter-from']} enterTo={styles['panel-enter-to']} leave={styles['panel-leave']} leaveFrom={styles['panel-leave-from']} leaveTo={styles['panel-leave-to']}>
             <Popover.Panel className={styles["navmenu-panel"]}>
             <div className={styles['navmenu-divider']} />
-              <Container as='nav' className={styles['navmenu-wrapper']}>
-              {content}
-              </Container>
+              <nav className={styles['navmenu-wrapper']}>
+              {children}
+              </nav>
             </Popover.Panel>
           </Transition>
         </div>

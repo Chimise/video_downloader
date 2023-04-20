@@ -12,6 +12,7 @@ type ContainerProps<E extends React.ElementType> = {
   className?: string;
   size?: ContainerSizes;
   as?: E;
+  gutter?: boolean
 };
 
 const Container = <E extends React.ElementType = "div">({
@@ -19,13 +20,14 @@ const Container = <E extends React.ElementType = "div">({
   children,
   size = "lg",
   as,
+  gutter = true,
   ...props
 }: Props<E>) => {
   const Element = as || "div";
 
   return (
     <Element
-      className={cn(styles.container, styles[`container-${size}`], className)}
+      className={cn(styles.container, {[styles['container-gutter']]: gutter}, className)}
       {...props}
     >
       {children}

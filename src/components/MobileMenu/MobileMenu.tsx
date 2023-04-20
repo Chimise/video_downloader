@@ -2,17 +2,21 @@ import { Fragment } from "react";
 import { Transition } from "@headlessui/react";
 import styles from "./MobileMenu.module.css";
 import Accordion from "../Accordion/Accordion";
+import Container from "../Container/Container";
+import DownloaderLink from "../DownloaderLink/DownloaderLink";
+import type { Downloader } from "@/types";
 
 interface MobileMenuProps {
   isMenuVisible: boolean;
+  downloaders: Array<Downloader>;
 }
 
-const MobileMenu = ({ isMenuVisible }: MobileMenuProps) => {
+const MobileMenu = ({ isMenuVisible, downloaders }: MobileMenuProps) => {
   return (
     <Transition as={Fragment} show={isMenuVisible}>
       <nav className={styles.menu}>
         <Transition.Child
-          className={styles["menu-wrapper"]}
+          as={Fragment}
           enter={styles["menu-enter"]}
           enterFrom={styles["menu-enter_from"]}
           enterTo={styles["menu-enter_to"]}
@@ -20,7 +24,17 @@ const MobileMenu = ({ isMenuVisible }: MobileMenuProps) => {
           leaveFrom={styles["menu-leave_from"]}
           leaveTo={styles["menu-leave-to"]}
         >
-        <Accordion title='Downloaders' content={<div>Hello</div>} />
+          <div className={styles["menu-wrapper"]}>
+            <Container gutter={false}>
+              <Accordion title="Downloader">
+                <div className={styles['menu-links']}>
+                  {downloaders.map(downloader => (<div className={styles['menu-link']} key={downloader.name}>
+                    <DownloaderLink className={styles.link} {...downloader} />
+                  </div>))}
+                </div>
+              </Accordion>
+            </Container>
+          </div>
         </Transition.Child>
       </nav>
     </Transition>

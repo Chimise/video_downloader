@@ -1,17 +1,20 @@
+.accordion {
+  width: 100%;
+  position: relative;
+}
+
 
 .accordion-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: var(--primary-2);
-  padding: 1.2rem 1rem;
+  padding: 1.2rem 0.5rem;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.5rem;
   color: var(--slate-dark-2);
   width: 100%;
-  position: relative;
-  z-index: 50;
 }
 
 .accordion-btn:hover {
@@ -41,6 +44,13 @@
 .accordion-panel {
   font-size: 0.95rem;
   line-height: 1.2rem;
+  padding: 0.8rem 0.5rem;
+  height: auto;
+  width: 100%;
+}
+
+.accordion-panel > div {
+  width: 100%;
 }
 
 .panel-enter, .panel-leave {

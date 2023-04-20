@@ -45,11 +45,15 @@
 
 .navmenu-panel {
   position: absolute;
-  left: 0;
+  width: calc(100vw - 10rem);
   right: 0;
   top: calc(var(--navbar-height));
   background-color: var(--white);
   z-index: 50;
+  height: 75vh;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  box-shadow: var(--shadow-primary);
 }
 
 .navmenu-divider {
@@ -59,8 +63,9 @@
 }
 
 .navmenu-wrapper {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  padding: 3.5rem 2.5rem 3rem;
+  width: 100%;
+  height: calc(75vh - 0.25rem);
 }
 
 .panel-enter {

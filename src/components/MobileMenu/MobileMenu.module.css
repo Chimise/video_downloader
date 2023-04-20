@@ -31,18 +31,43 @@
     pointer-events: none;
 }
 
-
 .menu-wrapper {
     position: relative;
     z-index: 50;
-    height: 15rem;
-    width: 100vw;
+    min-height: 10rem;
+    width: 100%;
     overflow-y: hidden;
     background: var(--white);
     pointer-events: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-@media(min-width: 1024px) {
+
+
+.menu-links {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-link {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.link {
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .menu-link {
+        width: 50%;
+    }
+}
+
+
+@media (min-width: 1024px) {
     .menu {
         display: none;
     }

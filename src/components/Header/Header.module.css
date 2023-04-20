@@ -98,6 +98,21 @@
   
 }
 
+
+.navmenu-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* The padding might need to be change when the downloaders becomes too many */
+.navmenu-link {
+  padding: 1rem;
+}
+
 @media (min-width: 1024px) {
   .navbar {
     justify-content: start;
