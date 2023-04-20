@@ -2,6 +2,11 @@ import _ from 'lodash';
 import { ExtractedVideo } from '../types';
 import RequestError from '@/utils/request_error';
 
+/**
+ * An extractor is a Javascript class that when given a url return video data of type ExtractedVideo or ExtractedVideo array
+ * All extractors should implement this base extractor
+ */
+
 abstract class BaseExtractor {
     abstract urlPattern: RegExp;
     abstract url: string;

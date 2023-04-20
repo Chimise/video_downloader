@@ -11,7 +11,7 @@ export const getMediaMetaData = <T extends BaseExtractor>(Extractor: new (url: s
                 if (!url) {
                     throw new RequestError('Url query missing', 400);
                 }
-                console.log(url);
+                
                 const extractor = new Extractor(url);
                 const videoProps = await extractor.extractVideo();
                 return res.json(videoProps);

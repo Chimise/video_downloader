@@ -61,7 +61,6 @@ class YoutubeExtractor extends BaseExtractor {
 
         const id = this.validate();
         const { videoDetails, thumbnail_url, formats } = await ytdl.getInfo(this.url);
-        console.log(formats);
 
         const audioFormats = ytdl.filterFormats(formats, 'video').map(format => ({
             url: this.generateVideoUrl(format, '/api/downloads/youtube'),
@@ -69,6 +68,7 @@ class YoutubeExtractor extends BaseExtractor {
             width: format.width,
             height: format.height,
             rate: `${format.bitrate || ''}`,
+            quality: format.qualityLabel || format.quality
         }))
 
         return {
@@ -80,7 +80,6 @@ class YoutubeExtractor extends BaseExtractor {
         }
     }
 }
-
 
 
 export default YoutubeExtractor;
