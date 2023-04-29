@@ -35,7 +35,7 @@ const VideoMenu = ({ formats, onChange, value, title }: VideoSelectProps) => {
           <Menu.Items className={styles.options}>
             <div>
               {formats.map((format) => (
-                <Menu.Item key={format.quality}>
+                <Menu.Item key={format.url}>
                   {({ active }) => (
                     <button
                       className={cn(

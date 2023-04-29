@@ -1,0 +1,91 @@
+.video-dialog {
+    position: relative;
+    z-index: 1050;
+}
+
+.overlay-enter {
+    transition: opacity var(--medium) ease-out;
+}
+
+.overlay-leave {
+    transition: opacity var(--fast) ease-in;
+}
+
+.overlay-enter_from, .overlay-leave_to {
+    opacity: 0;
+}
+
+.overlay-enter_to, .overlay-leave_from {
+    opacity: 1;
+}
+
+.dialog-enter {
+    transition: opacity, transform var(--medium) ease-out;
+}
+
+.dialog-leave {
+    transition: opacity, transform var(--fast) ease-in;
+}
+
+.dialog-enter_from, .dialog-leave_to {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.dialog-enter_to, .dialog-leave_from {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--black-alpha-05);
+}
+
+.video-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.video-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+.video-panel {
+    width: 100%;
+    max-width: 1024px;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-primary);
+    position: absolute;
+    height: auto;
+}
+
+.video_close {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    display: flex;
+    color: var(--primary-1);
+}
+
+.video_close svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+}

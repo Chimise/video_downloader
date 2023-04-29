@@ -1,0 +1,32 @@
+[
+    {
+        "name": "youtube",
+        "iconName": "FaYoutube",
+        "isReady": true
+    },
+    {
+        "name": "facebook",
+        "iconName": "FaFacebook",
+        "isReady": true
+    },
+    {
+        "name": "twitter",
+        "iconName": "FaTwitter",
+        "isReady": true
+    },
+    {
+        "name": "linkedin",
+        "iconName": "FaLinkedinIn",
+        "isReady": true
+    },
+    {
+        "name": "instagram",
+        "iconName": "FaInstagram",
+        "isReady": false
+    },
+    {
+        "name": "tiktok",
+        "iconName": "FaTiktok",
+        "isReady": false
+    }
+]
