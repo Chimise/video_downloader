@@ -169,6 +169,8 @@ class FaceBookExtractor extends BaseExtractor {
             height: _.get(videoAttr, 'height'),
             duration: _.round(_.get(videoAttr, 'playable_duration_in_ms', 0) / 1000),
         })
+        // Generate the quality from the width if it exists
+        format.quality = format.width ? `${format.width}p` : format.quality;
 
         const id = _.get(videoAttr, 'id') || _.get(videoAttr, 'videoId') || this.id;
         const thumbnail = _.get(videoAttr, 'preferred_thumbnail.image.uri') || _.get(videoAttr, 'thumbnailImage.uri', '');

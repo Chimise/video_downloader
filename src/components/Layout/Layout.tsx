@@ -14,12 +14,14 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
 const handleToggleMenu = () => {
     setIsMenuOpen(prevMenu => !prevMenu);
 }   
+
   return (
     <>
       {downloaders && <MobileMenu downloaders={downloaders} isMenuVisible={isMenuOpen} />}
       {downloaders && <Header onMenuClick={handleToggleMenu} isOpen={isMenuOpen} downloaders={downloaders} />}
       <main>{children}</main>
       {downloaders && <Footer downloaders={downloaders} />}
+      
     </>
   );
 };

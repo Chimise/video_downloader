@@ -17,6 +17,8 @@ import FeatureCard from "@/components/FeatureCard";
 import VideoDownloadList from "@/components/VideoDownloadList";
 import useRequestVideo from "@/hooks/useRequestVideo";
 import { getSupportedDownloaders } from "@/utils";
+import Loader from '@/components/Loader/Loader';
+import VideoDownloadError from '@/components/VideoDownloadError/VideoDownloadError';
 
 const socials = [
   { icon: <FaFacebook />, text: "Facebook" },
@@ -49,7 +51,6 @@ const features: Array<{ title: string; description: string }> = [
   },
 ];
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const { sendRequest, isLoading, error, data } = useRequestVideo();
@@ -57,6 +58,7 @@ export default function Home() {
   const handleSubmit = async (url: string) => {
     await sendRequest("", url);
   };
+
 
   return (
     <>
@@ -95,8 +97,12 @@ export default function Home() {
         </Container>
         <Container className={styles['hero-video']}>
           <div>
-            {isLoading && <span>Loading</span>}
-            {error && <span>{error}</span>}
+            {isLoading && <div className={styles['hero-loading']}>
+              <Loader />
+              </div>}
+            {error && <div className={styles['hero-error']}>
+              <VideoDownloadError message={error} />
+              </div>}
             {data && <VideoDownloadList videoData={data} />}
           </div>
         </Container>
@@ -132,16 +138,6 @@ export default function Home() {
           </div>
         </Container>
       </section>
-      {/* <section className={styles["usage"]}>
-        <Container>
-          <header className={styles["header"]}>
-            <h4 className={styles["usage-subtitle"]}>usage</h4>
-            <h2 className={styles["usage-title"]}>
-              A simple guide on how to download videos with SaveVideo
-            </h2>
-          </header>
-        </Container>
-      </section> */}
     </>
   );
 }
@@ -152,6 +148,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       downloaders
-    }
+    },
+    revalidate: 60 * 60
   }
 }

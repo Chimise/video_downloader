@@ -3,7 +3,6 @@ import { ExtractedVideo } from "@/types";
 import BaseExtractor from "./base";
 import RequestError from "@/utils/request_error";
 import _ from 'lodash';
-import encrypter from "@/services/encrypter";
 
 
 class YoutubeExtractor extends BaseExtractor {
@@ -45,25 +44,14 @@ class YoutubeExtractor extends BaseExtractor {
     }
 
 
-    generateVideoUrl(format: ytdl.videoFormat, downloadUrl: string) {
-
-        const media = encrypter.encryptObj({
-            ...format,
-            video_url: this.url,
-            id: this.id
-        })
-
-        return downloadUrl + `?media=${encodeURIComponent(media)}`;
-    }
-
-
     async extractVideo(): Promise<ExtractedVideo> {
 
         const id = this.validate();
         const { videoDetails, thumbnail_url, formats } = await ytdl.getInfo(this.url);
+        console.log(videoDetails);
 
-        const audioFormats = ytdl.filterFormats(formats, 'video').map(format => ({
-            url: this.generateVideoUrl(format, '/api/downloads/youtube'),
+        const videoFormats = ytdl.filterFormats(formats, 'videoandaudio').map(format => ({
+            url: format.url,
             ext: format.container || this.extractVideoExt(format.mimeType),
             width: format.width,
             height: format.height,
@@ -75,7 +63,7 @@ class YoutubeExtractor extends BaseExtractor {
             id,
             origin_url: this.url,
             thumbnail: thumbnail_url || _.get(videoDetails, 'thumbnails[0].url') || _.get(videoDetails, 'thumbnail.thumbnails[0].url', ''),
-            formats: audioFormats,
+            formats: videoFormats,
             title: _.get(videoDetails, 'title') || _.get(videoDetails, 'description', '')!,
         }
     }

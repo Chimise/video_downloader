@@ -91,7 +91,7 @@ class LinkedInParser extends HTMLParser {
                         url: data.src,
                         ext: data.type.replace('video/', '') || attr?.ext,
                         rate: data['data-bitrate'] || attr?.rate,
-                        quality: attr?.quality
+                        quality: attr?.quality || 'unknown'
                     }
                 }),
                 thumbnail

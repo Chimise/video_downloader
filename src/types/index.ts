@@ -75,4 +75,5 @@ export interface TwitterUser {
 export interface Downloader {
     iconName: string;
     name: string;
+    isReady: boolean;
 }
