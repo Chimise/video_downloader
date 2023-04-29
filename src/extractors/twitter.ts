@@ -26,7 +26,7 @@ class TwitterExtractor extends BaseExtractor {
             'Content-Type': 'application/x-www-form-urlencoded',
             ...defaultHeader
         }
-        const req = await Request.send(this.genUrl('/guest/activate.json'), { headers, method: 'POST', timeout: 8000 });
+        const req = await Request.send(this.genUrl('/guest/activate.json'), { headers, method: 'POST', timeout: 20000 });
 
         const data = await req.parseJSON<{ guest_token: string }>();
 
@@ -127,7 +127,6 @@ class TwitterExtractor extends BaseExtractor {
         const title = _.get(status, 'full_text', '').replace(/\n/g, ' ').replace(/\s+(?:https?:\/\/[^ ]+)/g, '');
 
         const medias = _.get(status, 'entities.media', []).concat(_.get(status, 'extended_entities.media', []));
-
         
         const videoMedias = medias.filter(media => _.get(media, 'type') === 'video');
 
@@ -160,7 +159,7 @@ class TwitterExtractor extends BaseExtractor {
         }
 
         if (!videos[0]?.formats[0]?.url) {
-            throw new RequestError('No video was found by the server', 404)
+            throw new RequestError('No video was found by the server', 404);
         }
 
         return videos;

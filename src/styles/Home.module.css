@@ -49,6 +49,16 @@
   background-color: transparent;
 }
 
+.hero-loading, .hero-error {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+}
+
+
 .social {
   margin: 4rem 0rem 0rem;
 }
