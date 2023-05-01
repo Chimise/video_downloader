@@ -6,7 +6,7 @@
 
 .loader > span {
   display: inline-block;
-  background-color: purple;
+  background-color: var(--primary-1);
   width: 0px;
   height: 0px;
   border-radius: 50%;
@@ -16,7 +16,7 @@
 }
 
 .loader > span:nth-child(2) {
-  background-color: palevioletred;
+  background-color: var(--secondary-3);
   animation-delay: 0.2s;
 }
 

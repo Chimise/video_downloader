@@ -63,38 +63,11 @@
     --supplementary-3: rgb(49, 162, 76);
     --supplementary-4: rgb(50, 52, 54);
 
-    /* Button colors */
-    --disabled-button-background: #E4E6EB;
-    --disabled-button-text: #BCC0C4;
-    --disabled-icon: #BCC0C4;
-    --disabled-text: #BCC0C4;
-    --primary-button-background: #1B74E4;
-    --primary-button-icon: #FFFFFF;
-    --primary-button-pressed: #77A7FF;
-    --primary-button-text: #FFFFFF;
-    --secondary-button-background: #E4E6EB;
-    --secondary-button-background-floating: #ffffff;
-    --secondary-button-background-on-dark: rgba(0, 0, 0, 0.4);
-    --secondary-button-pressed: rgba(0, 0, 0, 0.05);
-    --secondary-button-stroke: transparent;
-    --secondary-button-text: #050505;
-
 
     /* Shadows */
     --shadow-elevated: 0px 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-primary: 0px 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-persistent: 0px 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    
-    
-    /* Progress */
-    --progress-ring-neutral-background: rgba(0, 0, 0, 0.2);
-    --progress-ring-neutral-foreground: #000000;
-    --progress-ring-on-media-background: rgba(255, 255, 255, 0.2);
-    --progress-ring-on-media-foreground: #FFFFFF;
-    --progress-ring-blue-background: rgba(24, 119, 242, 0.2);
-    --progress-ring-blue-foreground: hsl(214, 89%, 52%);
-    --progress-ring-disabled-background: rgba(190, 195, 201, 0.2);
-    --progress-ring-disabled-foreground: #BEC3C9;
     
 
     /* Animations */
@@ -111,13 +84,6 @@
     --fast: 200ms;
     --medium: 300ms;
     --slow: 400ms;
-
-    /* Font Families */
-    --font-family-apple: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
-    --font-family-code: ui-monospace, Menlo, Consolas, Monaco, monospace;
-    --font-family-default: Helvetica, Arial, sans-serif;
-    --font-family-segoe: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
-    --body-font-family: Placeholder Font;
     
     /* Body */
     --body-font-size: 0.9375rem;

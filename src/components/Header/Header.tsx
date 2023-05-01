@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from 'next/link';
 import Container from "../Container/Container";
 import NavMenu from "../NavMenu/NavMenu";
 import styles from "./Header.module.css";
@@ -18,9 +19,9 @@ const Header = ({ onMenuClick, isOpen, downloaders }: HeaderProps) => {
   return (
     <header className={styles.navbar}>
       <Container className={styles["navbar-wrapper"]}>
-        <div className={styles["navbar-logo"]}>
+        <Link href='/' className={styles["navbar-logo"]}>
           <Image src="/logo.png" alt="Logo Image" width={150} height={30} />
-        </div>
+        </Link>
         <nav>
           <NavMenu name="Downloaders">
               <div className={styles['navmenu-links']}>

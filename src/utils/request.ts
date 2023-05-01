@@ -93,7 +93,6 @@ class Request {
                     if (!response.ok) {
                         const error = new RequestError('An error occurred', response.status);
                         // Return an error response
-                        console.log(response);
                         if (response.status === 404) {
                             return rej(new RequestError('Data not found', 404));
                         }

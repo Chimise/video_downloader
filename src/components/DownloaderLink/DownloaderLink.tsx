@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import cn from 'classnames';
+import React from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import type { IconType } from "react-icons";
 import styles from "./Downloader.module.css";
@@ -10,31 +10,16 @@ interface DownloaderLinkProps {
   className?: string;
 }
 
-const getIcon = async (iconName: string) => {
-  const Icons = await import("react-icons/fa");
-  //@ts-ignore
-  return (Icons[iconName] as IconType) || Icons["FaPenAlt"];
-};
-
 
 const DownloaderLink = ({ iconName, name }: DownloaderLinkProps) => {
-  const [FaIcon, setFaIcon] = useState<JSX.Element | null>(null);
 
-  useEffect(() => {
-    async function getLinkIcon() {
-      const Icon = await getIcon(iconName);
-      //@ts-ignore
-      setFaIcon(Icon);
-    }
-
-    getLinkIcon();
-  }, [iconName]);
+  const Icon = dynamic(() => import("react-icons/fa").then(icons => icons[iconName] as IconType || icons['FaPenAlt']));
 
   return (
     <Link className={styles['download-link']} href={`/downloaders/${name}`}>
-      {FaIcon && (
+      {Icon && (
         <span className={styles["download-icon"]}>
-          {FaIcon}
+          <Icon />
         </span>
       )}
       <span className={styles["download-text"]}>{name}</span>
