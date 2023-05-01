@@ -1,9 +1,10 @@
 import { NextApiRequest,  NextApiResponse} from "next";
 import BaseExtractor from "@/extractors/base";
-import { getQuery, handleError } from "@/utils";
+import { getQuery} from "@/utils";
 import RequestError from "@/utils/request_error";
+import ErrorManager from "@/services/error-manager";
 
-export const getMediaMetaData = <T extends BaseExtractor>(Extractor: new (url: string) => T) => async (req: NextApiRequest, res: NextApiResponse) => {
+export const getVideoMetaData = <T extends BaseExtractor>(Extractor: new (url: string) => T) => async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         switch (req.method) {
             case 'GET':
@@ -21,6 +22,6 @@ export const getMediaMetaData = <T extends BaseExtractor>(Extractor: new (url: s
         }
 
     } catch (err) {
-        return handleError(err, res);
+        return ErrorManager.handleError(res, err);
     }
 }

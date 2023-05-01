@@ -48,7 +48,6 @@ class YoutubeExtractor extends BaseExtractor {
 
         const id = this.validate();
         const { videoDetails, thumbnail_url, formats } = await ytdl.getInfo(this.url);
-        console.log(videoDetails);
 
         const videoFormats = ytdl.filterFormats(formats, 'videoandaudio').map(format => ({
             url: format.url,
