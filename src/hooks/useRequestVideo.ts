@@ -15,7 +15,7 @@ const initialState: State = {
     isLoading: false
 }
 
-type actions = {type: 'INIT'} | {type: 'SUCCESS', payload: Data} | {type: 'ERROR', payload: string};
+type actions = { type: 'INIT' } | { type: 'SUCCESS', payload: Data } | { type: 'ERROR', payload: string };
 
 const reducer = (state: State, action: actions): State => {
     switch (action.type) {
@@ -37,6 +37,8 @@ const reducer = (state: State, action: actions): State => {
                 error: null,
                 isLoading: false
             }
+        default:
+            return state;
     }
 }
 
@@ -45,7 +47,7 @@ const baseUrl = '/api/medias';
 const fetcher = async (url: string) => {
     const response = await fetch(url);
     const data = await response.json();
-    if(!response.ok) {
+    if (!response.ok) {
         throw new Error((data as Error).message);
     }
 
@@ -59,13 +61,13 @@ const useRequestVideo = () => {
 
     const sendRequest = useCallback(async (downloader: string, url: string) => {
         // If the downloader is an empty string add it like that else add a forwardslash before the downloader
-        const path = downloader ? `/${downloader}`: downloader;
+        const path = downloader ? `/${downloader}` : downloader;
         const resourceUrl = `${baseUrl}${path}?url=${encodeURIComponent(url)}`;
         try {
 
-            dispatch({type: 'INIT'});
+            dispatch({ type: 'INIT' });
             const responseData: Data = await fetcher(resourceUrl);
-            dispatch({type: 'SUCCESS', payload: responseData});
+            dispatch({ type: 'SUCCESS', payload: responseData });
 
             // Return this function incase you want to access the raw response
             return {
@@ -74,7 +76,7 @@ const useRequestVideo = () => {
                 }
             }
         } catch (error) {
-            dispatch({type: 'ERROR', payload: (error as Error).message})
+            dispatch({ type: 'ERROR', payload: (error as Error).message })
 
             // Return this function incase you want to access the raw error;
             return {
@@ -85,7 +87,7 @@ const useRequestVideo = () => {
         }
     }, []);
 
-    const {data, error, isLoading} = state;
+    const { data, error, isLoading } = state;
 
     const memoizedData = useMemo(() => {
         return {
