@@ -1,4 +1,6 @@
 import TwitterExtractor from '@/extractors/twitter';
-import { getMediaMetaData } from '@/controllers/media';
+import { getVideoMetaData } from '@/controllers/media';
+import RateLimiter from '@/services/ratelimiter';
 
-export default getMediaMetaData(TwitterExtractor);
+
+export default RateLimiter.applyRateLimiting(getVideoMetaData(TwitterExtractor));

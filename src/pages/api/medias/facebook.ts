@@ -1,4 +1,5 @@
 import FaceBookExtractor from "@/extractors/facebook";
-import { getMediaMetaData } from "@/controllers/media";
+import { getVideoMetaData } from "@/controllers/media";
+import RateLimiter from "@/services/ratelimiter";
 
-export default getMediaMetaData(FaceBookExtractor);
+export default RateLimiter.applyRateLimiting(getVideoMetaData(FaceBookExtractor));

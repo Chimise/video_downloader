@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import YoutubeExtractor from "@/extractors/youtube";
-import { getMediaMetaData } from "@/controllers/media";
+import { getVideoMetaData } from "@/controllers/media";
+import RateLimiter from "@/services/ratelimiter";
 
 
-export default getMediaMetaData(YoutubeExtractor);
+export default RateLimiter.applyMiddleware(getVideoMetaData(YoutubeExtractor));

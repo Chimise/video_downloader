@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import LinkedInExtractor from "@/extractors/linkedin";
-import { getMediaMetaData } from "@/controllers/media";
+import { getVideoMetaData } from "@/controllers/media";
+import RateLimiter from "@/services/ratelimiter";
 
 
-export default getMediaMetaData(LinkedInExtractor);
+export default RateLimiter.applyRateLimiting(getVideoMetaData(LinkedInExtractor));

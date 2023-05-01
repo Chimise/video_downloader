@@ -1,12 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import extractors, {BaseExtractor}  from "@/extractors";
 import RequestError from "@/utils/request_error";
-import { getQuery, handleError } from "@/utils";
+import { getQuery} from "@/utils";
+import RateLimiter from "@/services/ratelimiter";
+import ErrorManager from "@/services/error-manager";
+
 
 export const matchExtractor = (url: string) => new Promise<BaseExtractor>((res, rej) => {
 
     for (const Extractor of extractors) {
-        // Create and instance of Video extractor
+        // Create an instance of a Video extractor
         const videoExtractor = new Extractor(url);
 
         // Extra check, if the current extractor do not have any of this functions, continue to other extractors
@@ -45,8 +48,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const videoData = await extractor.extractVideo();
         res.json(videoData);
     } catch (error) {
-        return handleError(error, res);
+        return ErrorManager.handleError(res, error);
     }
 }
 
-export default handler;
+export default RateLimiter.applyRateLimiting(handler);

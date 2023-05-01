@@ -1,40 +1,40 @@
 import { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
-import rateLimit from 'express-rate-limit';
-import slowDown from 'express-slow-down';
+import rateLimit, { Options, MemoryStore } from 'express-rate-limit';
 import RequestError from "@/utils/request_error";
 import IpAddr from './ipaddr';
 
-interface RatingLimitingOptions {
-    limit?: number; 
-    windowMs?: number; 
-    delayAfter?: number;
-    delayMs?: number
-}
+
+
 
 class RateLimiter {
+    // This function allow next.js to use express specific middlewares
     static applyMiddleware<Req extends object, Res extends object>(middleware: (req: Req, res: Res, next: (result: unknown) => void) => any) {
-        return (req: NextApiRequest, res: NextApiResponse) => new Promise((reject, resolve) => {
-            // @ts-expect-error
+        return (req: NextApiRequest, res: NextApiResponse) => new Promise((resolve, reject) => {
+            // @ts-ignore
             middleware(req, res, (value => {
                 value instanceof Error ? reject(value) : resolve(value);
             }))
         })
     }
 
-    static getRateLimitMiddlewares({ limit = 10, windowMs = 60 * 1000, delayAfter = Math.round(10 / 2), delayMs = 500 }: RatingLimitingOptions = {}) {
-        // @ts-ignore
-        return [slowDown({ keyGenerator: IpAddr.getIpAdrr, windowMs, delayAfter, delayMs }), rateLimit({ keyGenerator: IpAddr.getIpAdrr, windowMs, max: limit })]
-    }
 
+    // We apply the ratelimiting in this function
+    static applyRateLimiting(handler: NextApiHandler, options?: Options) {
+        const store = new MemoryStore();
+        // The middleware should be configured here, configuring it inside the wrapper function lead to a sort of bug
+        const errorHandler = (req: NextApiRequest, res: NextApiResponse) => res.status(429).json(new RequestError('Too many requests, please try again', 429));
+        //@ts-ignore
+        const rateMiddleware = rateLimit({ max: 10, keyGenerator: IpAddr.getIpAdrr.bind(IpAddr), windowMs: 5 * 60 * 1000, standardHeaders: true, legacyHeaders: false, message: errorHandler, store, ...(options || {}) });
+        return async (req: NextApiRequest, res: NextApiResponse) => {
 
-    static async applyRateLimiting(req: NextApiRequest, res: NextApiResponse, handler: NextApiHandler) {
-        try {
-            await Promise.all(this.getRateLimitMiddlewares().map(this.applyMiddleware).map(middleware => middleware(req, res)));
-        } catch (error) {
-            res.status(429).json(new RequestError('Too many requests', 429));
+            try {
+                await this.applyMiddleware(rateMiddleware)(req, res);
+            } catch (error) {
+                return errorHandler(req, res);
+            }
+
+            return handler(req, res);
         }
-
-        return handler(req, res);
     }
 }
 

@@ -44,7 +44,7 @@ const downloaderName = capitalizeWord(downloader.name);
       <section className={styles.hero}>
         <Container>
         <h2 className={styles["hero-title"]}>
-            Download Videos From <br /> Your {downloaderName}
+            Download Videos From <br /> {downloaderName}
           </h2>
           <p className={styles["hero-description"]}>
             Choose any supported video format of your choice.{" "}
