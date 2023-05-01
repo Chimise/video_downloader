@@ -14,8 +14,11 @@ class ErrorManager {
 
     public async report(err: any) {
         if (this.isProd) {
-            sentry.captureException(err);
-            await sentry.flush(2000);
+            // If error is an instance of RequestError with code 500 or error is generic, report error
+            if (err instanceof RequestError && err.code === 500 || !(err instanceof RequestError)) {
+                sentry.captureException(err);
+                await sentry.flush(2000);
+            }
         }
         logger.error(`Caught exception: ${JSON.stringify(err, Object.getOwnPropertyNames(err))}`);
     }
@@ -23,7 +26,7 @@ class ErrorManager {
     static async handleError(res: NextApiResponse, err: any) {
         const error = err instanceof RequestError ? err : new RequestError('An error occurred');
         const errorManager = new ErrorManager();
-        errorManager.report(error);
+        await errorManager.report(error);
         return res.status(error.code).json(error);
     }
 }
