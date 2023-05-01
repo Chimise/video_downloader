@@ -1,10 +1,9 @@
-import {GetStaticProps} from 'next'
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import Container from "@/components/Container/Container";
-import VideoSearch from "@/components/VideoSearch/VideoSearch";
+import Container from "@/components/Container";
+import VideoSearch from "@/components/VideoSearch";
 import {
   FaFacebook,
   FaYoutube,
@@ -17,8 +16,8 @@ import FeatureCard from "@/components/FeatureCard";
 import VideoDownloadList from "@/components/VideoDownloadList";
 import useRequestVideo from "@/hooks/useRequestVideo";
 import { getSupportedDownloaders } from "@/utils";
-import Loader from '@/components/Loader/Loader';
-import VideoDownloadError from '@/components/VideoDownloadError/VideoDownloadError';
+import Loader from "@/components/Loader";
+import VideoDownloadError from "@/components/VideoDownloadError";
 
 const socials = [
   { icon: <FaFacebook />, text: "Facebook" },
@@ -51,14 +50,12 @@ const features: Array<{ title: string; description: string }> = [
   },
 ];
 
-
 export default function Home() {
   const { sendRequest, isLoading, error, data } = useRequestVideo();
 
   const handleSubmit = async (url: string) => {
     await sendRequest("", url);
   };
-
 
   return (
     <>
@@ -91,18 +88,22 @@ export default function Home() {
             <VideoSearch
               className={styles["hero-text-input"]}
               onSubmit={handleSubmit}
-              placeholder='Paste your video link here'
+              placeholder="Paste your video link here"
             />
           </div>
         </Container>
-        <Container className={styles['hero-video']}>
+        <Container className={styles["hero-video"]}>
           <div>
-            {isLoading && <div className={styles['hero-loading']}>
-              <Loader />
-              </div>}
-            {error && <div className={styles['hero-error']}>
-              <VideoDownloadError message={error} />
-              </div>}
+            {isLoading && (
+              <div className={styles["hero-loading"]}>
+                <Loader />
+              </div>
+            )}
+            {error && (
+              <div className={styles["hero-error"]}>
+                <VideoDownloadError message={error} />
+              </div>
+            )}
             {data && <VideoDownloadList videoData={data} />}
           </div>
         </Container>
@@ -142,13 +143,12 @@ export default function Home() {
   );
 }
 
-
 export const getStaticProps: GetStaticProps = async () => {
   const downloaders = await getSupportedDownloaders();
   return {
     props: {
-      downloaders
+      downloaders,
     },
-    revalidate: 60 * 60
-  }
-}
+    revalidate: 60 * 60,
+  };
+};
