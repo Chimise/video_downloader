@@ -1,5 +1,5 @@
 import { NextApiResponse } from 'next';
-import sentry from '@sentry/node';
+import * as sentry from '@sentry/node';
 import logger from './logger';
 import RequestError from '@/utils/request_error';
 

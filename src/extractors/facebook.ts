@@ -131,6 +131,7 @@ class FaceBookExtractor extends BaseExtractor {
     // Fetch the facebook url
     async fetchWebPage() {
         this.id = this.validate();
+        console.log(this.id, 'Id if it exists')
         const req = await Request.send(this.url.replace('://m.facebook.com/', '://www.facebook.com/'));
         const text = await req.response.text();
         return text;
