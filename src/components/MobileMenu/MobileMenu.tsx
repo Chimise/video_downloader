@@ -26,7 +26,7 @@ const MobileMenu = ({ isMenuVisible, downloaders }: MobileMenuProps) => {
         >
           <div className={styles["menu-wrapper"]}>
             <Container gutter={false}>
-              <Accordion title="Downloader">
+              <Accordion title="Downloaders">
                 <div className={styles['menu-links']}>
                   {downloaders.map(downloader => (<div className={styles['menu-link']} key={downloader.name}>
                     <DownloaderLink className={styles.link} {...downloader} />

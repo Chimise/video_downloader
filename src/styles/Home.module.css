@@ -27,15 +27,15 @@
 }
 
 .hero-title {
-  font-size: 2.25rem;
-  line-height: 3.2rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
   text-align: center;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .hero-description {
-  font-size: 1.4rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: center;
   margin-top: 1rem;
 }
@@ -49,7 +49,8 @@
   background-color: transparent;
 }
 
-.hero-loading, .hero-error {
+.hero-loading,
+.hero-error {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   display: flex;
@@ -57,7 +58,6 @@
   align-items: center;
   height: 5rem;
 }
-
 
 .social {
   margin: 4rem 0rem 0rem;
@@ -117,8 +117,8 @@
 
 .feature-title,
 .usage-title {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .cards {
@@ -143,6 +143,16 @@
 }
 
 @media (min-width: 768px) {
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .hero-input {
     width: 80%;
   }
@@ -154,11 +164,22 @@
   .card-wrapper {
     width: 50%;
   }
+
+  .feature-title,
+  .usage-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 @media (min-width: 1024px) {
   .hero-input {
     width: 75%;
+  }
+
+  .hero-description {
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
 
   .hero-container {
@@ -174,6 +195,7 @@
   .social-icon {
     width: 20%;
   }
+
 }
 
 @media (min-width: 1526px) {

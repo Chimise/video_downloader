@@ -9,10 +9,10 @@
 }
 
 .hero-title {
-  font-size: 2rem;
-  line-height: 2.8rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
   text-align: center;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .hero-description {
@@ -28,27 +28,33 @@
 }
 
 .hero-video {
-    padding-top: 2rem;
-    padding-bottom: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2.5rem;
 }
 
-.hero-loading, .hero-error {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5rem;
-  }
+.hero-loading,
+.hero-error {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+}
 
 @media (min-width: 768px) {
   .hero-input {
     width: 80%;
   }
 
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .hero-description {
-    font-size: 1.4rem;
-    line-height: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -57,12 +63,19 @@
     min-height: 110vh;
     padding: 10rem 2rem 8rem;
   }
+  
   .hero-input {
     width: 75%;
   }
+
   .hero-title {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .hero-description {
+    font-size: 1.4rem;
+    line-height: 2rem;
   }
 }
 
