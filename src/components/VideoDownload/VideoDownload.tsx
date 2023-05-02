@@ -59,6 +59,7 @@ const VideoDownload = ({ videoData }: VideoDownloadProps) => {
             <a
               className={styles["download-btn"]}
               href={currentFormat.url}
+              target='_blank'
               download={`${videoData.id}.${currentFormat.ext}`}
             >
               Download
