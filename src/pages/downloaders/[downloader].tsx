@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import type { GetServerSideProps } from "next";
+import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import { getSupportedDownloaders } from "@/utils";
 import type { Downloader } from "@/types";
 import Container from "@/components/Container";
@@ -75,7 +75,7 @@ const downloaderName = capitalizeWord(downloader.name);
 export default DownloaderPage;
 
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   let downloaderName = ctx.params?.downloader;
 
   if (!downloaderName) {
@@ -104,4 +104,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       downloader,
     },
   };
-};
+}
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const downloaders = await getSupportedDownloaders();
+  const paths = downloaders.map(downloader => ({
+    params: {
+      downloader: downloader.name
+    }
+  }))
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
