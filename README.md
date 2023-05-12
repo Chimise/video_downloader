@@ -1,38 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Video Downloader
 
-## Getting Started
+A web application for downloading videos from Social Media sites like Facebook, Twitter, LinkedIn and Youtube.
 
-First, run the development server:
+**Demo Link:** [https://video-downloader-theta.vercel.app/](https://video-downloader-theta.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Screenshots
+- Homepage
+    ![Video Downloader](./docs/video-downloader.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Downloading Video
+    ![Downloading Video](./docs/downloading.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Specific Downloader Page
+    ![Twitter Downloader Page](./docs/twitter-downloader.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Features
+- Download videos from multiple social media sites.
+- Supports downloading multiple video qualities and formats whenever possible.
+- Can play the extracted video directly on the website by clicking on the Play Icon.
+- Supports downloading videos from specific video downloader pages like Linkedin Video Downloader for much faster downloads.
+- Handles validation of different URLs with Regex preventing making http request for incorrect URLs resulting in a better performance.
+- API Ratelimiting and retrying of failed http requests.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Technologies used
+- Next.js(React)
+- Typescript
+- CSS Modules
+- Next.js API routes(Node.js)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Setup / Installation
+To run the project locally, follow the steps below:
 
-## Deploy on Vercel
+1.  Clone the repo:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```
+    bash git clone https://github.com/Chimise/video_downloader
+    ```
+2.  Install Dependencies
+    
+    ```
+    bash npm install
+    ```
+3.  Create a .env.local file
+    Checkout the [.env.example](./.env.example) file to see enviroment variables needed for development.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4.  Start the development server
+    ```
+    npm run build
+    ```
+
+
+### Approach:
+The projects uses Object-oriented programming concepts. It uses Typescript abstract classes to add functionalities to extended classes.
+The core video extraction logic is handled by two base classes, the Extractor class and the HTMLParser class. The HTMLParser adds functionality for extracting metadata from html strings on the server and the Extractor class provides functionality for validating the input url and extracting id from the url when possible as well as extracting video metadata.
+
+
+
+
+
+
+
+
