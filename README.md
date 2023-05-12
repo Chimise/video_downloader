@@ -6,14 +6,17 @@ A web application for downloading videos from Social Media sites like Facebook, 
 
 
 ### Screenshots
-- Homepage
-    ![Video Downloader](./docs/video-downloader.png)
+**Homepage**
 
-- Downloading Video
-    ![Downloading Video](./docs/downloading.png)
+![Video Downloader](./docs/video-downloader.png)
 
-- Specific Downloader Page
-    ![Twitter Downloader Page](./docs/twitter-downloader.png)
+**Downloading Video**
+
+![Downloading Video](./docs/downloading.png)
+
+**Specific Downloader Page**
+    
+![Twitter Downloader Page](./docs/twitter-downloader.png)
 
 
 ### Features
