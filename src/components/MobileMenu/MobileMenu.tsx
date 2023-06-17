@@ -9,9 +9,10 @@ import type { Downloader } from "@/types";
 interface MobileMenuProps {
   isMenuVisible: boolean;
   downloaders: Array<Downloader>;
+  onToggleMenu: () => void;
 }
 
-const MobileMenu = ({ isMenuVisible, downloaders }: MobileMenuProps) => {
+const MobileMenu = ({ isMenuVisible, downloaders, onToggleMenu }: MobileMenuProps) => {
   return (
     <Transition as={Fragment} show={isMenuVisible}>
       <nav className={styles.menu}>
@@ -29,7 +30,7 @@ const MobileMenu = ({ isMenuVisible, downloaders }: MobileMenuProps) => {
               <Accordion title="Downloaders">
                 <div className={styles['menu-links']}>
                   {downloaders.map(downloader => (<div className={styles['menu-link']} key={downloader.name}>
-                    <DownloaderLink className={styles.link} {...downloader} />
+                    <DownloaderLink className={styles.link} {...downloader} onClick={onToggleMenu} />
                   </div>))}
                 </div>
               </Accordion>

@@ -19,7 +19,7 @@ const Layout = ({ children, downloaders }: LayoutProps) => {
   return (
     <>
       {downloaders && (
-        <MobileMenu downloaders={downloaders} isMenuVisible={isMenuOpen} />
+        <MobileMenu downloaders={downloaders} isMenuVisible={isMenuOpen} onToggleMenu={handleToggleMenu} />
       )}
       {downloaders && (
         <Header

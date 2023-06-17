@@ -31,6 +31,8 @@
   line-height: 2.25rem;
   text-align: center;
   letter-spacing: 0.02em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
 }
 
 .hero-description {
@@ -38,6 +40,7 @@
   line-height: 1.5rem;
   text-align: center;
   margin-top: 1rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .hero-input {
@@ -69,6 +72,7 @@
   color: var(--gray-80);
   line-height: 1.75rem;
   font-weight: 500;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .social-icons {
@@ -119,6 +123,7 @@
 .usage-title {
   font-size: 1.875rem;
   line-height: 2.25rem;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .cards {

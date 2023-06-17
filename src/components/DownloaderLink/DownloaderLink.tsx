@@ -8,15 +8,16 @@ interface DownloaderLinkProps {
   iconName: string;
   name: string;
   className?: string;
+  onClick?: (evt?: React.MouseEvent<HTMLElement>) => void;
 }
 
 
-const DownloaderLink = ({ iconName, name }: DownloaderLinkProps) => {
+const DownloaderLink = ({ iconName, name, onClick }: DownloaderLinkProps) => {
 
   const Icon = dynamic(() => import("react-icons/fa").then(icons => icons[iconName] as IconType || icons['FaPenAlt']));
 
   return (
-    <Link className={styles['download-link']} href={`/downloaders/${name}`}>
+    <Link onClick={onClick && onClick} className={styles['download-link']} href={`/downloaders/${name}`}>
       {Icon && (
         <span className={styles["download-icon"]}>
           <Icon />

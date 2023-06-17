@@ -28,6 +28,7 @@ const NavMenu = ({ name, children, className }: NavMenuProps) => {
     }, timeoutDuration);
   };
 
+
   return (
     <Popover className={cn(styles.navmenu, className)}>
       {({ open }) => (
