@@ -59,7 +59,7 @@ const VideoDownload = ({ videoData }: VideoDownloadProps) => {
             <a
               className={styles["download-btn"]}
               href={`/api/downloads?url=${encodeURIComponent(currentFormat.url)}`}
-              download={`${videoData.id}.${currentFormat.ext}`}
+              target="_blank"
             >
               Download
             </a>
