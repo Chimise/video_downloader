@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import extractors, {BaseExtractor}  from "@/extractors";
+import extractors, { BaseExtractor } from "@/extractors";
 import RequestError from "@/utils/request_error";
-import { getQuery} from "@/utils";
+import { getQuery } from "@/utils";
 import RateLimiter from "@/services/ratelimiter";
 import ErrorManager from "@/services/error-manager";
 
@@ -23,7 +23,7 @@ export const matchExtractor = (url: string) => new Promise<BaseExtractor>((res, 
 
             return res(videoExtractor)
         } catch (error) {
-            
+
             // if it throws an error move to other extractors
             if (!(error instanceof RequestError)) {
                 return rej(error);
@@ -38,17 +38,22 @@ export const matchExtractor = (url: string) => new Promise<BaseExtractor>((res, 
     rej(new RequestError('Download link could not be found', 404));
 })
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-    const url = getQuery(req, 'url');
-    if (!url) {
-        return res.status(400).json({ message: 'Url query is required but is missing' });
-    }
+    switch (req.method) {
+        case 'GET':
+            const url = getQuery(req, 'url');
+            if (!url) {
+                return res.status(400).json({ message: 'Url query is required but is missing' });
+            }
 
-    try {
-        const extractor = await matchExtractor(url);
-        const videoData = await extractor.extractVideo();
-        res.json(videoData);
-    } catch (error) {
-        return ErrorManager.handleError(res, error);
+            try {
+                const extractor = await matchExtractor(url);
+                const videoData = await extractor.extractVideo();
+                return res.json(videoData);
+            } catch (error) {
+                return ErrorManager.handleError(res, error);
+            }
+        default:
+            return res.status(405).json({message: 'Method not supported'});
     }
 }
 
