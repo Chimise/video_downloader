@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pipeline } from 'node:stream';
 import { promisify } from 'node:util';
+import download from 'download';
 import RequestError from '@/utils/request_error';
 import { getQuery } from '@/utils';
 import ErrorManager from '@/services/error-manager';
 import Request from '@/utils/request';
+import randomUserAgent from '@/utils/user_agent';
+import RateLimiter from '@/services/ratelimiter';
 
 const streamPipeline = promisify(pipeline);
 
@@ -13,38 +16,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         switch (req.method) {
             case 'GET':
                 const url = getQuery(req, 'url');
+                let ext = getQuery(req, 'ext');
                 if (!url) {
                     throw new RequestError('Invalid args provided, must have a url query');
                 }
 
-                let request: Request;
+                if(!ext) {
+                    ext = 'mp4';
+                }
+                
+                res.setHeader('Content-Disposition', `attachment; filename="video.${ext}"`);
 
                 try {
-                    request = await Request.send(url);
-                } catch (error) {
-                    return res.status(500).end();
-                }
-
-                if (!request.response.body) {
-                    return res.status(404).end();
-                }
-
-                let contentDisposition = request.response.headers.get('content-disposition');
-
-                if (contentDisposition) {
-                    contentDisposition = contentDisposition.replace('inline', 'attachment').toLowerCase();
-                }
-                else {
-                    const contentType = request.response.headers.get('content-type') || 'video/mp4';
-                    const ext = contentType.split('; ')[0].split('/').slice(-1)[0];
-                    contentDisposition = `attachment; filename="video.${ext}"`;
-                }
-
-                res.setHeader('Content-Disposition', contentDisposition);
-
-                try {
+                    const headers = {
+                        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                        'Accept-Encoding': 'gzip, deflate',
+                        'Accept-Language': 'en-us,en;q=0.5',
+                        'User-Agent': randomUserAgent()
+                    }
                     //@ts-ignore
-                    await streamPipeline(request.response.body, res);
+                    await streamPipeline(download(url, {headers, retry: 2, followRedirect: true}), res);
                 } catch (error) {
                     const errorManager = new ErrorManager();
                     errorManager.report(error);
@@ -60,4 +52,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 
-export default handler;
+export default RateLimiter.applyRateLimiting(handler);
