@@ -5,7 +5,6 @@ import download from 'download';
 import RequestError from '@/utils/request_error';
 import { getQuery } from '@/utils';
 import ErrorManager from '@/services/error-manager';
-import Request from '@/utils/request';
 import randomUserAgent from '@/utils/user_agent';
 import RateLimiter from '@/services/ratelimiter';
 
