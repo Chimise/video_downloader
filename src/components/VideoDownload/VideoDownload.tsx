@@ -14,6 +14,7 @@ const VideoDownload = ({ videoData }: VideoDownloadProps) => {
   const [currentFormat, setCurrentFormat] = useState(videoData.formats[0]);
   const { showVideo } = useVideoCtx();
 
+
   return (
     <div className={styles["download"]}>
       <div className={styles["thumbnail-wrapper"]}>
@@ -58,7 +59,7 @@ const VideoDownload = ({ videoData }: VideoDownloadProps) => {
           <div>
             <a
               className={styles["download-btn"]}
-              href={currentFormat.url}
+              href={`/api/downloads?${new URLSearchParams({url: currentFormat.url, ext: currentFormat.ext}).toString()}`}
               target="_blank"
             >
               Download
