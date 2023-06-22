@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "npm install -g rimraf && rimraf node_modules",
+    "postbuild": "rm -rf node_modules",
     "prestart": "npm ci --only=production",
     "start": "next start",
     "lint": "next lint"
