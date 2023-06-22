@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "npm install -g rimraf && rimraf node_modules",
+    "prestart": "npm ci --only=production",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,7 +17,6 @@
     "@headlessui/react": "^1.7.13",
     "@sentry/node": "^7.50.0",
     "@sentry/react": "^7.50.0",
-    "@types/download": "^8.0.2",
     "classnames": "^2.3.2",
     "download": "^8.0.0",
     "express-rate-limit": "^6.7.0",
@@ -30,6 +31,7 @@
     "ytdl-core": "^4.11.4"
   },
   "devDependencies": {
+    "@types/download": "^8.0.2",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.15.9",
     "@types/react": "^18.0.29",
