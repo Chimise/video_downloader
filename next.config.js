@@ -6,6 +6,7 @@ const securityHeaders = [{key: 'X-XSS-Protection', value: '1; mode=block'}, {key
 
 const nextConfig = {
   reactStrictMode: true,
+  distDir: 'build',
   async headers() {
     return [
       {
